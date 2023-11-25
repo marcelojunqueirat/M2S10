@@ -2,10 +2,12 @@ package com.tech.m2s10.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "JORNALISTAS")
 public class Jornalista {
@@ -16,11 +18,22 @@ public class Jornalista {
     private Double salario;
     private String nivelCargo;
     private Integer numeroPublicacoes;
+    private Long idUsuario;
 
-    @ManyToOne
-    @JoinColumn(name = "ID_USUARIO", referencedColumnName = "ID")
-    private Usuario idUsuario;
+    public Jornalista(String nome, Double salario, String nivelCargo, Integer numeroPublicacoes, Long idUsuario) {
+        this.nome = nome;
+        this.salario = salario;
+        this.nivelCargo = nivelCargo;
+        this.numeroPublicacoes = numeroPublicacoes;
+        this.idUsuario = idUsuario;
+    }
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "idJornalista")
-    private List<Noticia> noticias;
+    public Jornalista(Long id, String nome, Double salario, String nivelCargo, Integer numeroPublicacoes, Long idUsuario) {
+        this.id = id;
+        this.nome = nome;
+        this.salario = salario;
+        this.nivelCargo = nivelCargo;
+        this.numeroPublicacoes = numeroPublicacoes;
+        this.idUsuario = idUsuario;
+    }
 }
