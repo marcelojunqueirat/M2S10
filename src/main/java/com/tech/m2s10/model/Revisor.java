@@ -9,8 +9,6 @@ import java.util.List;
 @Entity
 @Table(name = "REVISORES")
 public class Revisor {
-    //id, id_usuario, nome, salario, nível de cargo (String).
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
