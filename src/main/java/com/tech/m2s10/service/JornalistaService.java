@@ -1,6 +1,5 @@
 package com.tech.m2s10.service;
 
-import com.tech.m2s10.controller.JornalistaController;
 import com.tech.m2s10.model.Jornalista;
 import com.tech.m2s10.repository.JornalistaRepository;
 import jakarta.transaction.Transactional;
@@ -13,7 +12,7 @@ import java.util.List;
 @Service
 public class JornalistaService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(JornalistaController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(JornalistaService.class);
     private final JornalistaRepository jornalistaRepo;
 
     public JornalistaService(JornalistaRepository jornalistaRepository) {
