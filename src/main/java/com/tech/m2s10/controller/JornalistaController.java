@@ -16,15 +16,15 @@ import java.util.List;
 public class JornalistaController {
     private final JornalistaService jornalistaService;
 
-    public JornalistaController(JornalistaService jornalistaService){
+    public JornalistaController(JornalistaService jornalistaService) {
         this.jornalistaService = jornalistaService;
     }
 
     @GetMapping
-    public ResponseEntity<List<JornalistaResponse>> listar(){
+    public ResponseEntity<List<JornalistaResponse>> listar() {
         List<Jornalista> jornalistas = jornalistaService.listar();
         var resp = new ArrayList<JornalistaResponse>();
-        for (Jornalista jornalista : jornalistas){
+        for (Jornalista jornalista : jornalistas) {
             JornalistaResponse jornalistaDTO = JornalistaResponse.makeDTO(jornalista);
             resp.add(jornalistaDTO);
         }

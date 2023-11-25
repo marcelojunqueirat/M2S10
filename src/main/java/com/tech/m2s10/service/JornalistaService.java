@@ -1,14 +1,19 @@
 package com.tech.m2s10.service;
 
+import com.tech.m2s10.controller.JornalistaController;
 import com.tech.m2s10.model.Jornalista;
 import com.tech.m2s10.repository.JornalistaRepository;
 import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class JornalistaService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(JornalistaController.class);
     private final JornalistaRepository jornalistaRepo;
 
     public JornalistaService(JornalistaRepository jornalistaRepository) {
@@ -17,6 +22,7 @@ public class JornalistaService {
 
     @Transactional
     public List<Jornalista> listar(){
+        LOGGER.info("Inciando chamada da listagem de jornalistas....");
         return jornalistaRepo.findAll();
     }
 
@@ -34,6 +40,7 @@ public class JornalistaService {
     public Jornalista update(Long id, Jornalista jornalistaAtualizado) {
         Jornalista jornalista = this.jornalistaRepo.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Jornalista com id informado não encontrado, id: " + id));
+        LOGGER.debug("Jornalista existe, atualizando informações....");
         jornalista.setNome(jornalistaAtualizado.getNome());
         jornalista.setSalario(jornalistaAtualizado.getSalario());
         jornalista.setNivelCargo(jornalistaAtualizado.getNivelCargo());
