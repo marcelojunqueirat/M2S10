@@ -1,7 +1,6 @@
 package com.tech.m2s10.dto;
 
 import com.tech.m2s10.model.Jornalista;
-import com.tech.m2s10.model.Usuario;
 import lombok.Getter;
 
 @Getter

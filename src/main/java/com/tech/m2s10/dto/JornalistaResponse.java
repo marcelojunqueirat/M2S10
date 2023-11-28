@@ -1,9 +1,6 @@
 package com.tech.m2s10.dto;
 
 import com.tech.m2s10.model.Jornalista;
-import com.tech.m2s10.model.Usuario;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

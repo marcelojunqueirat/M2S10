@@ -2,7 +2,6 @@ package com.tech.m2s10.dto;
 
 import com.tech.m2s10.model.Jornalista;
 import com.tech.m2s10.model.Noticia;
-import com.tech.m2s10.model.Revisor;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
