@@ -39,6 +39,7 @@ public class SecurityConfiguration {
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Do not create session
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.GET, "usuarios").permitAll()
+                        .requestMatchers(HttpMethod.GET, "jornalistas").permitAll()
                         .requestMatchers(HttpMethod.POST, "usuarios/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "usuarios").permitAll()
                         .anyRequest().authenticated()  // all others endpoints should be authenticated
