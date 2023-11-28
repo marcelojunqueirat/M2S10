@@ -4,6 +4,7 @@ import com.tech.m2s10.dto.RevisorRequest;
 import com.tech.m2s10.dto.RevisorResponse;
 import com.tech.m2s10.model.Revisor;
 import com.tech.m2s10.service.RevisorService;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,7 @@ public class RevisorController {
     }
 
     @GetMapping
+    @RolesAllowed( {"ADMIN","USUARIO"} )
     public ResponseEntity<List<RevisorResponse>> listar(){
         List<Revisor> revisores = revisorService.listar();
         var resp = new ArrayList<RevisorResponse>();
@@ -32,7 +34,8 @@ public class RevisorController {
     }
 
     @PostMapping
-    public ResponseEntity<RevisorResponse> cadastrarUsuario(@RequestBody RevisorRequest request) {
+    @RolesAllowed("ADMIN")
+    public ResponseEntity<RevisorResponse> cadastrarRevisor(@RequestBody RevisorRequest request) {
         Revisor revisor = revisorService.salvar(request.makeDTO());
         return ResponseEntity.status(HttpStatus.CREATED).body(RevisorResponse.makeDTO(revisor));
     }

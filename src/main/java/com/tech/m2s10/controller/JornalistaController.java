@@ -4,6 +4,7 @@ import com.tech.m2s10.dto.JornalistaRequest;
 import com.tech.m2s10.dto.JornalistaResponse;
 import com.tech.m2s10.model.Jornalista;
 import com.tech.m2s10.service.JornalistaService;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +33,8 @@ public class JornalistaController {
     }
 
     @PostMapping
-    public ResponseEntity<JornalistaResponse> cadastrarUsuario(@RequestBody JornalistaRequest request) {
+    @RolesAllowed( {"ADMIN","USUARIO"} )
+    public ResponseEntity<JornalistaResponse> cadastrarJornalista(@RequestBody JornalistaRequest request) {
         Jornalista jornalista = jornalistaService.salvar(request.makeDTO());
         return ResponseEntity.status(HttpStatus.CREATED).body(JornalistaResponse.makeDTO(jornalista));
     }

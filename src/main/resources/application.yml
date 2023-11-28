@@ -24,3 +24,6 @@ spring:
       enabled: false  # set to false to avoid conflicts with spring security
   jackson:
     default-property-inclusion: NON_NULL
+
+secret:
+   key: ${JWT_SECRET:1234567890qwertyuiop}

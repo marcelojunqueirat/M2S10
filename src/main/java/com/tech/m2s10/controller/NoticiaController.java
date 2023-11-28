@@ -4,6 +4,7 @@ import com.tech.m2s10.dto.NoticiaRequest;
 import com.tech.m2s10.dto.NoticiaResponse;
 import com.tech.m2s10.model.Noticia;
 import com.tech.m2s10.service.NoticiaService;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +33,8 @@ public class NoticiaController {
     }
 
     @PostMapping
-    public ResponseEntity<NoticiaResponse> cadastrarUsuario(@RequestBody NoticiaRequest request) {
+    @RolesAllowed("ADMIN")
+    public ResponseEntity<NoticiaResponse> cadastrarNoticia(@RequestBody NoticiaRequest request) {
         Noticia noticia = noticiaService.salvar(request.makeDTO());
         return ResponseEntity.status(HttpStatus.CREATED).body(NoticiaResponse.makeDTO(noticia));
     }
